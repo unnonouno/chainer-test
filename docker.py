@@ -13,7 +13,7 @@ base_choices = [
     'ubuntu14_py2', 'ubuntu14_py3', 'ubuntu14_py35', 'ubuntu14_py36',
     'ubuntu16_py2', 'ubuntu16_py3',
     'centos6_py2', 'centos7_py2', 'centos7_py3']
-cuda_choices = ['none', 'cuda70', 'cuda75', 'cuda80', 'cuda90']
+cuda_choices = ['none', 'cuda70', 'cuda75', 'cuda80', 'cuda90', 'ubuntu-cuda']
 cudnn_choices = [
     'none', 'cudnn4', 'cudnn5', 'cudnn5-cuda8', 'cudnn51',
     'cudnn51-cuda8', 'cudnn6', 'cudnn6-cuda8', 'cudnn7-cuda8', 'cudnn7-cuda9']
@@ -305,6 +305,12 @@ codes['cuda90'] = cuda_base.format(
     installer=cuda90_installer,
     sha256sum='96863423feaa50b5c1c5e1b9ec537ef7ba77576a3986652351ae43e66bcd080c',
 )
+
+codes['ubuntu-cuda'] = '''
+RUN apt-get -y update && \\
+    apt-get -y install nvidia-cuda-dev && \\
+    apt-get clean
+'''
 
 # cudnn
 
